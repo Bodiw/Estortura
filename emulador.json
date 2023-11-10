@@ -1,0 +1,7 @@
+{
+  "EMULADOR": "path/to/EMULADOR",
+  "COMPILADOR": "path/to/COMPILADOR",
+  "CONF": "path/to/CONFIG",
+  "CODIGO": "path/to/CODIGO",
+  "START": "path/to/START"
+}
