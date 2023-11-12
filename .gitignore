@@ -1,0 +1,4 @@
+.vscode/
+target/
+bin/
+traza.log
