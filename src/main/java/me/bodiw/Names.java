@@ -11,7 +11,7 @@ public class Names {
             "ESTRUCTURA VA A TERMINAR CON MI CORDURA",
             "La vida es dura, pero mas dura es Estructura",
             "Replanteate las decisiones que te han llevado hasta aqui",
-            "Imagina tener recursos utiles en esta uni jaja",
+            "2 de cada 4 personas son la mitad",
             "Patata",
             "No se que poner aqui",
             "It's dangerous to debug assembly alone, take this gui",
