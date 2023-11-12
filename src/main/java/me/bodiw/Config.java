@@ -12,7 +12,7 @@ import com.google.gson.reflect.TypeToken;
 public class Config {
 
     String configPath;
-    public String emulator, compiler, config, code, start, bin, bitmapType;
+    public String emulator, compiler, config, code, start, bin, bitmapType, breakpoint;
     public int iniMem, iniStep = 1, iniSkip, iniBitmap;
 
     public Config(String configPath) {
@@ -31,11 +31,12 @@ public class Config {
         emulator = json.get("EMULADOR");
         compiler = json.get("COMPILADOR");
         config = json.get("CONF");
-        start = json.get("START");
         code = json.get("CODIGO");
+        breakpoint = json.get("TAG_BREAKPOINT");
+        start = json.get("TAG_INICIO");
 
-        iniMem = Integer.parseInt(json.get("DIR_MEM"));
-        iniStep = Integer.parseInt(json.get("STEP_BASE"));
+        iniMem = Integer.parseInt(json.get("MEM_ADDR_INICIO"));
+        iniStep = Integer.parseInt(json.get("STEP_INICIO"));
         iniSkip = Integer.parseInt(json.get("SKIP_INICIO"));
         iniBitmap = Integer.parseInt(json.get("BITMAP_ADDR"));
         bitmapType = json.get("BITMAP_TYPE");
