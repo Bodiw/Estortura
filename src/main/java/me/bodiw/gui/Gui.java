@@ -529,7 +529,7 @@ public class Gui extends JFrame {
 
                 conf.setLayout(new GridBagLayout());
 
-                stepspinner.setModel(new SpinnerNumberModel(1, 0, null, 1));
+                stepspinner.setModel(new SpinnerNumberModel(assembler.stepsInicio, 0, null, 1));
                 stepspinner.setBorder(Colors.BORDER);
                 stepspinner.setMinimumSize(dimension_100_38);
                 stepspinner.setPreferredSize(dimension_114_38);
@@ -545,7 +545,7 @@ public class Gui extends JFrame {
                 gridBagConstraints.gridx = 1;
                 conf.add(stepspinner, gridBagConstraints);
 
-                memspinner.setModel(new SpinnerNumberModel(4000, 0, null, 16));
+                memspinner.setModel(new SpinnerNumberModel(assembler.memAddress, 0, null, 16));
                 memspinner.setBorder(Colors.BORDER);
                 memspinner.setMinimumSize(dimension_100_38);
                 memspinner.setPreferredSize(dimension_114_38);
@@ -972,6 +972,7 @@ public class Gui extends JFrame {
         }
 
         private void updateInst() {
+                lastval.setText(assembler.lastCmd);
                 nextval.setText(assembler.nextInst);
         }
 

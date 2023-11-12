@@ -14,7 +14,8 @@ import me.bodiw.model.Word;
 
 public class AssemblerProcess implements AutoCloseable {
 
-    public String emu, conf, bin, lastInst, nextInst, breakpoint_tag;
+    public String emu, conf, bin, lastCmd, nextInst, breakpoint_tag;
+    public int stepsInicio, skipInicio;
 
     BufferedReader in;
     BufferedWriter out;
@@ -27,7 +28,7 @@ public class AssemblerProcess implements AutoCloseable {
     public int memAddress;
 
     public AssemblerProcess(Config cf) {
-        this.lastInst = "";
+        this.lastCmd = "";
 
         try {
             Process p = new ProcessBuilder(cf.emulator, "-c", cf.config, cf.bin).redirectErrorStream(true).start();
@@ -37,8 +38,12 @@ public class AssemblerProcess implements AutoCloseable {
             e.printStackTrace();
         }
 
+        this.read(); // Skip first config/lines
+
         memAddress = cf.iniMem - (cf.iniMem % 16);
         breakpoint_tag = cf.breakpoint;
+        skipInicio = cf.iniSkip;
+        stepsInicio = cf.iniStep;
 
         controlRegs = new ControlReg[8];
         regs = new Word[8][4];
@@ -63,14 +68,16 @@ public class AssemblerProcess implements AutoCloseable {
         }
 
         if (!breakpoint_tag.isEmpty()) {
+            System.out.println("Running to " + breakpoint_tag + " breakpoint");
             this.write("p + " + breakpoint_tag);
             this.read();
             this.write("e");
-            this.read();
         }
 
-        
-
+        if (skipInicio > 0) {
+            this.write("t " + skipInicio);
+            this.read();
+        }
     }
 
     public String read() {
@@ -99,19 +106,29 @@ public class AssemblerProcess implements AutoCloseable {
     }
 
     public String readRegs() {
-        this.write("r");
+        this.writeSilent("r");
         return this.read();
     }
 
     public String readMem(int address) {
-        this.write("v " + (address - (address % 16)) + " 32");
+        this.writeSilent("v " + (address - (address % 16)) + " 32");
         return this.read();
+    }
+
+    public void writeSilent(String s) {
+        try {
+            out.write(s + "\n");
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void write(String s) {
         try {
             out.write(s + "\n");
             out.flush();
+            this.lastCmd = s;
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -30,10 +30,10 @@ public class App {
         AssemblerProcess ap = null;
         try {
             ap = new AssemblerProcess(load(configPath));
-            ap.read(); // Skip first config/lines
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("Assembler process created");
         return ap;
     }
 
