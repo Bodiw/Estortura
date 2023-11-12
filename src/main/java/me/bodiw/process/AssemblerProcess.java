@@ -14,7 +14,7 @@ import me.bodiw.model.Word;
 
 public class AssemblerProcess implements AutoCloseable {
 
-    public String emu, conf, bin, lastInst, nextInst;
+    public String emu, conf, bin, lastInst, nextInst, breakpoint_tag;
 
     BufferedReader in;
     BufferedWriter out;
@@ -38,6 +38,7 @@ public class AssemblerProcess implements AutoCloseable {
         }
 
         memAddress = cf.iniMem - (cf.iniMem % 16);
+        breakpoint_tag = cf.breakpoint;
 
         controlRegs = new ControlReg[8];
         regs = new Word[8][4];
@@ -60,6 +61,15 @@ public class AssemblerProcess implements AutoCloseable {
             cf.iniBitmap = cf.iniBitmap % 32;
             bitMap = mem[cf.iniBitmap / 4][cf.iniBitmap % 4];
         }
+
+        if (!breakpoint_tag.isEmpty()) {
+            this.write("p + " + breakpoint_tag);
+            this.read();
+            this.write("e");
+            this.read();
+        }
+
+        
 
     }
 
