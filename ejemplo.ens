@@ -1,0 +1,35 @@
+LEA:      MACRO  (reg, ETIQ)
+          or     reg, r0,  low(ETIQ)
+          or.u   reg, reg, high(ETIQ)
+          ENDMACRO
+
+DBNZ:     MACRO  (reg, ETIQ)
+          sub    reg, reg, 1
+          cmp    r2, reg, r0
+          bb0    eq, r2, ETIQ
+          ENDMACRO
+		  
+LOAD: 	  MACRO (reg, ETIQ)
+		  LEA   (reg, ETIQ)
+		  ld 	reg, reg, r0
+		  ENDMACRO
+
+PUSH:     MACRO  (reg)
+          subu   r30, r30, 4
+          st     reg, r30, r0
+          ENDMACRO
+
+POP:      MACRO  (reg)
+          ld     reg, r30, r0
+          addu   r30, r30, 4
+          ENDMACRO
+
+org 4000
+cadena: data "\H\O\L\AHola buenos dias"
+
+START:
+        LEA    (r10, cadena)
+        ld.bu     r2, r10, r0
+        st     r2, r0, r10
+
+END: stop
