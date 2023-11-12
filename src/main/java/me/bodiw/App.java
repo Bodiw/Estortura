@@ -8,7 +8,13 @@ import oe.process.CompilerProcess;
 
 public class App {
 
+    static String configPath = "config.json";
+
     public static void main(String[] args) {
+
+        if (args.length > 0) {
+            configPath = args[0];
+        }
 
         FlatDarkLaf.setup();
 
@@ -23,7 +29,7 @@ public class App {
     public static AssemblerProcess createAssemblerProcess() {
         AssemblerProcess ap = null;
         try {
-            ap = new AssemblerProcess(load("config.json"));
+            ap = new AssemblerProcess(load(configPath));
             ap.read(); // Skip first config/lines
         } catch (Exception e) {
             e.printStackTrace();
