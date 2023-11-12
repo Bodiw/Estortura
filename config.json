@@ -3,6 +3,7 @@
   "COMPILADOR": "/path/to/emu/88110e",
   "CONF": "/path/to/src/conf",
   "CODIGO": "/path/to/src/pro.ens",
+  "SCALE": "1.1",
   "STEP_INICIO": "1",
   "SKIP_INICIO": "0",
   "MEM_ADDR_INICIO": "4000",
