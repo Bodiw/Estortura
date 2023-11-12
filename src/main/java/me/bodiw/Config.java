@@ -14,6 +14,7 @@ public class Config {
     String configPath;
     public String emulator, compiler, config, code, start, bin, bitmapType, breakpoint;
     public int iniMem, iniStep = 1, iniSkip, iniBitmap;
+    public float scale;
 
     public Config(String configPath) {
         this.configPath = configPath;
@@ -40,5 +41,7 @@ public class Config {
         iniSkip = Integer.parseInt(json.get("SKIP_INICIO"));
         iniBitmap = Integer.parseInt(json.get("BITMAP_ADDR"));
         bitmapType = json.get("BITMAP_TYPE");
+
+        scale = Float.parseFloat(json.get("SCALE"));
     }
 }

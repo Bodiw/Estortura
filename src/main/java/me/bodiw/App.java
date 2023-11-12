@@ -22,6 +22,7 @@ public class App {
 
         Gui gui = new Gui(name, createAssemblerProcess());
 
+        gui.setLocationRelativeTo(null);
         gui.setVisible(true);
 
     }

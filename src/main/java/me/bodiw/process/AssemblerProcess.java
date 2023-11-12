@@ -16,6 +16,7 @@ public class AssemblerProcess implements AutoCloseable {
 
     public String emu, conf, bin, lastCmd, nextInst, breakpoint_tag;
     public int stepsInicio, skipInicio;
+    public float scale;
 
     BufferedReader in;
     BufferedWriter out;
@@ -44,6 +45,7 @@ public class AssemblerProcess implements AutoCloseable {
         breakpoint_tag = cf.breakpoint;
         skipInicio = cf.iniSkip;
         stepsInicio = cf.iniStep;
+        scale = cf.scale;
 
         controlRegs = new ControlReg[8];
         regs = new Word[8][4];

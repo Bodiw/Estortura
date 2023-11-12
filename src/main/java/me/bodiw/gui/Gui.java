@@ -82,7 +82,7 @@ public class Gui extends JFrame {
 
         private AssemblerProcess assembler;
 
-        private float scale = 1.1f;
+        private float scale = 1;
 
         public Gui(String name, AssemblerProcess assembler) {
                 super(name);
@@ -134,6 +134,8 @@ public class Gui extends JFrame {
                 bitTab = new JTabbedPane();
                 reloadButton = new JButton();
                 bitLabels = new JLabel[32];
+
+                scale = assembler.scale;
 
                 Dimension dimension_400_19 = new Dimension((int) (scale * 400), (int) (scale * 19));
                 Dimension dimension_100_19 = new Dimension((int) (scale * 100), (int) (scale * 19));
