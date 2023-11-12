@@ -3,7 +3,6 @@ package me.bodiw;
 public class Names {
 
     public static final String[] NAMES = {
-            "Odio Estructura",
             "En Ensamblador, tus programas duran tan poco como tu en la cama",
             "Espero que te paguen por horas si programas ensamblador",
             "MC88K, powered by your tears",
