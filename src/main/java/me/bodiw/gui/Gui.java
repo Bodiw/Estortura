@@ -863,7 +863,7 @@ public class Gui extends JFrame {
                                         stepspinner.setValue(stepspinner.getPreviousValue());
                                 }
                                 break;
-                        case KeyEvent.VK_RIGHT:
+                        case KeyEvent.VK_D:
                                 assembler.step(1);
                                 this.update();
                                 break;
