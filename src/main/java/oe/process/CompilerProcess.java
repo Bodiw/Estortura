@@ -12,7 +12,7 @@ public class CompilerProcess {
     }
 
     public void compile() throws Exception {
-        ProcessBuilder pb = new ProcessBuilder(compiler, code, "-e", start, "-o", output);
+        ProcessBuilder pb = new ProcessBuilder(compiler, "-e", start, "-o", output, code);
         pb.inheritIO();
         Process p = pb.start();
         p.waitFor();
