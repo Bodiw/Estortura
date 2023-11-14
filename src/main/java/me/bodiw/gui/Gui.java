@@ -842,7 +842,7 @@ public class Gui extends JFrame {
 
                 if (e.getWheelRotation() < 0) {
                         spinner.setValue(spinner.getNextValue());
-                } else if ((Integer) spinner.getPreviousValue() > 0) {
+                } else if ((Integer) spinner.getPreviousValue() >= 0) {
                         spinner.setValue(spinner.getPreviousValue());
                 }
         }
