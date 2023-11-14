@@ -30,6 +30,22 @@ Un unico boton, que vuelve a compilar y ejecutar el archivo de codigo fuente, pe
 
 El uso del compilador genera un archivo temporal en el directorio actual `estortura.bin`
 
+### Atajos de teclado
+
+Con la version 0.1.0, ahora se disponen de atajos de teclado para acelerar el debugging de la interfaz
+
+| Tecla            | Descripcion              |
+| ---------------- | ------------------------ |
+| F5               | Reload                   |
+| T                | Realiza t steps          |
+| W                | Incrementa steps en 1    |
+| S                | Decrementa steps en 1    |
+| D                | Realiza 1 Step           |
+| Flecha Izquierda | Incrementa memoria en 16 |
+| Flecha Derecha   | Decrementa memoria en 16 |
+| V                | Recarga la memoria       |
+| M                | Recarga la memoria       |
+
 ### Bitmap
 
 Tanto en configuracion inicial como haciendo click sobre una celda de Registros o Memoria o una Ascii, actualiza el Bitmap a seguir dicha celda y mostrar su valor en bits.
