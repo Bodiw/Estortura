@@ -24,6 +24,7 @@ public class App {
 
         gui.setLocationRelativeTo(null);
         gui.setVisible(true);
+        gui.requestFocus();
 
     }
 

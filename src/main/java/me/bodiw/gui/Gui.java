@@ -832,9 +832,52 @@ public class Gui extends JFrame {
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                                 .addGap(24, 24, 24)));
+
+                this.addKeyListener(new KeyAdapter() {
+                        public void keyPressed(KeyEvent evt) {
+                                frameKeyPressEvent(evt);
+                        }
+                });
                 pack();
 
                 this.update();
+        }
+
+        public void frameKeyPressEvent(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                        case KeyEvent.VK_T:
+                                stepbuttonActionPerformed(null);
+                                break;
+                        case KeyEvent.VK_V:
+                        case KeyEvent.VK_M:
+                                membuttonActionPerformed(null);
+                                break;
+                        case KeyEvent.VK_F5:
+                                reloadButtonActionPerformed(null);
+                                break;
+                        case KeyEvent.VK_W:
+                                stepspinner.setValue(stepspinner.getNextValue());
+                                break;
+                        case KeyEvent.VK_S:
+                                if ((Integer) stepspinner.getPreviousValue() > 0) {
+                                        stepspinner.setValue(stepspinner.getPreviousValue());
+                                }
+                                break;
+                        case KeyEvent.VK_RIGHT:
+                                assembler.step(1);
+                                this.update();
+                                break;
+                        case KeyEvent.VK_UP:
+                                memspinner.setValue(memspinner.getNextValue());
+                                break;
+                        case KeyEvent.VK_DOWN:
+                                if ((Integer) memspinner.getPreviousValue() >= 0) {
+                                        memspinner.setValue(memspinner.getPreviousValue());
+                                }
+                                break;
+                        default:
+                                break;
+                }
         }
 
         public void mouseWheelMovedEvent(MouseWheelEvent e) {
