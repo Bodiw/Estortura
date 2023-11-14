@@ -33,6 +33,11 @@ public class Names {
             "Por la tercera matricula vamos ya joer...",
             "Fundamentos Cloud es absolutamente la mejor asignatura de la carrera",
             "Estoy en tus paredes",
-            "Algun dia optimizare esto para que no esten todos estos titulos en tu RAM"
+            "Algun dia optimizare esto para que no esten todos estos titulos en tu RAM",
+            "Losing-your-sanity-any%-speedrun.ens",
+            "POR FAVOR LLAMEN A LA POLICIA ME ESTAN MATANDO",
+            "Let him cook",
+            "Jesse we need to code",
+            "GUI Ensamblador 100% real no fake 1 link mega 4k full hd no virus"
     };
 }
