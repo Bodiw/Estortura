@@ -1,0 +1,14 @@
+{
+  "EMULADOR": "emu\\88110.exe",
+  "COMPILADOR": "emu\\88110e.exe",
+  "CONF": "emu\\serie",
+  "CODIGO": "cvd.ens",
+  "SCALE": "1.1",
+  "STEP_INICIO": "1",
+  "SKIP_INICIO": "0",
+  "MEM_ADDR_INICIO": "4000",
+  "BITMAP_TYPE": "MEMORY",
+  "BITMAP_ADDR": "4000",
+  "TAG_INICIO": "PPAL",
+  "TAG_BREAKPOINT": ""
+}
