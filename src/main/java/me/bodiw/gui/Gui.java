@@ -30,6 +30,7 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import me.bodiw.App;
+import me.bodiw.EnsambladorMapper;
 import me.bodiw.model.Word;
 import me.bodiw.process.AssemblerProcess;
 
@@ -79,6 +80,8 @@ public class Gui extends JFrame {
         private JPanel asciiMemPanel;
         private JPanel bitTabPanel;
         private JTabbedPane bitTab;
+
+        private JTextArea codeWindow;
 
         private AssemblerProcess assembler;
 
@@ -195,6 +198,15 @@ public class Gui extends JFrame {
                 bitTabPanel.setForeground(Colors.FOREGROUND);
 
                 this.getContentPane().setBackground(Colors.BACKGROUND);
+
+                // Crear el JTextArea con scroll horizontal
+                codeWindow = new JTextArea(7, 20);
+                codeWindow.setLineWrap(false);
+
+                // Envolver el JTextArea en un JScrollPane
+                JScrollPane scrollPane = new JScrollPane(codeWindow);
+                scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
                 for (int i = 0; i < 8; i++) { // Etiquetas R XX
                         JLabel label = new JLabel();
@@ -838,6 +850,7 @@ public class Gui extends JFrame {
                                 frameKeyPressEvent(evt);
                         }
                 });
+
                 pack();
 
                 this.update();
@@ -1021,10 +1034,17 @@ public class Gui extends JFrame {
                 nextval.setText(assembler.nextInst);
         }
 
+        private void updateCodeArea() {
+                String codigo = EnsambladorMapper.lineaEnEjecucion(assembler.cf.code, assembler.controlRegs[0].value);
+                System.out.println(codigo);
+                codeWindow.setText(codigo);
+        }
+
         private void update() {
                 updateRegs();
                 updateMem();
                 updateInst();
                 updateBitmap();
+                updateCodeArea();
         }
 }

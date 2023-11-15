@@ -28,7 +28,10 @@ public class AssemblerProcess implements AutoCloseable {
 
     public int memAddress;
 
+    public Config cf;
+
     public AssemblerProcess(Config cf) {
+        this.cf = cf;
         this.lastCmd = "";
 
         try {
@@ -138,7 +141,7 @@ public class AssemblerProcess implements AutoCloseable {
 
     public void step(int steps) {
         this.write("t " + steps);
-        this.read();
+        System.out.println(this.read());
     }
 
     public void updateRegs() {
