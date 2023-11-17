@@ -1,7 +1,7 @@
 {
   "EMULADOR": "/path/to/emu/em88110",
   "COMPILADOR": "/path/to/emu/88110e",
-  "CONF": "/path/to/src/conf",
+  "CONF": "/path/to/src/serie",
   "CODIGO": "/path/to/src/pro.ens",
   "SCALE": "1.1",
   "STEP_INICIO": "1",

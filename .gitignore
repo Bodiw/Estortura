@@ -1,4 +1,5 @@
 .vscode/
 target/
+.idea/
 bin/
 traza.log
