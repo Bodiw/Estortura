@@ -16,6 +16,7 @@ import java.awt.event.MouseWheelListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -254,7 +255,7 @@ public class Gui extends JFrame {
                 }
 
                 tabRegistros.addTab("Registros", panelRegistros);
-                tabRegistros.setEnabledAt(0,false);
+                tabRegistros.setEnabledAt(0, false);
 
                 /*
                  * MEMORIA PRINCIPAL
@@ -379,19 +380,19 @@ public class Gui extends JFrame {
                 }
 
                 asciireg.addTab("Ascii", asciiRegPanel);
-                asciireg.setEnabledAt(0,false);
+                asciireg.setEnabledAt(0, false);
                 controltab.setMaximumSize(dimension_442_187);
                 controlpanel.setLayout(new GridBagLayout());
 
                 String[] names = { "PC", "TI", "Ciclo", "FL", "FE", "FC", "FV", "FR" };
                 String[] tooltips = {
-                        "Program Counter\n     Direccion de Memoria del Contador de Programa",
-                        "Total Instrucciones", "Ciclo de Reloj",
-                        "Flag: Little Endian\n     0 => Big Endian\n     1 => Little Endian",
-                        "Flag: Exceptions\n     0 => Excepciones Activas\n     1 => Excepciones Inhibidas",
-                        "Flag: Courriage (Acarreo)\n     0 => No ha habido Acarreo\n     1 => Ha habido Acarreo",
-                        "Flag: Overflow (desbordamiento)\n     0 => No ha habido Overflow\n     1 => Ha habido Overflow",
-                        "Flag: Round (Redondeo)\n    0 => Redondeo al mas cercano\n    1 => Redondeo hacia 0\n    2 => Redondeo hacia -Inf\n    3 => Redondeo hacia +Inf" };
+                                "Program Counter\n     Direccion de Memoria del Contador de Programa",
+                                "Total Instrucciones", "Ciclo de Reloj",
+                                "Flag: Little Endian\n     0 => Big Endian\n     1 => Little Endian",
+                                "Flag: Exceptions\n     0 => Excepciones Activas\n     1 => Excepciones Inhibidas",
+                                "Flag: Courriage (Acarreo)\n     0 => No ha habido Acarreo\n     1 => Ha habido Acarreo",
+                                "Flag: Overflow (desbordamiento)\n     0 => No ha habido Overflow\n     1 => Ha habido Overflow",
+                                "Flag: Round (Redondeo)\n    0 => Redondeo al mas cercano\n    1 => Redondeo hacia 0\n    2 => Redondeo hacia -Inf\n    3 => Redondeo hacia +Inf" };
 
                 for (int i = 0; i < 8; i++) { // Etiquetas Registros de Control
                         JLabel label = new JLabel();
@@ -470,10 +471,10 @@ public class Gui extends JFrame {
                 }
 
                 bitTab.addTab("Bitmap", bitTabPanel);
-                bitTab.setEnabledAt(0,false);
+                bitTab.setEnabledAt(0, false);
 
                 controltab.addTab("Control", controlpanel);
-                controltab.setEnabledAt(0,false);
+                controltab.setEnabledAt(0, false);
 
                 Instrucciones.setLayout(new GridBagLayout());
 
@@ -672,7 +673,7 @@ public class Gui extends JFrame {
                 }
 
                 asciimem.addTab("Ascii", asciiMemPanel);
-                asciimem.setEnabledAt(0,false);
+                asciimem.setEnabledAt(0, false);
 
                 reloadButton.setText("Reload");
                 reloadButton.setToolTipText("Direccion de Memoria desde la cual mostrar");
@@ -689,154 +690,154 @@ public class Gui extends JFrame {
                         }
                 });
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                GroupLayout layout = new GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addGroup(layout.createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment.LEADING,
-                                                        false)
+                                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(mem,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(asciimem,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(reloadButton,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(conf,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(
-                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addGroup(layout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING,
-                                                                        false)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                        .addComponent(stdinbutton,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(0, 0, 0)
-                                                                        .addComponent(stdinval,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                174,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addComponent(Instrucciones,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(layout.createSequentialGroup()
-                                                        .addGroup(layout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                        .addComponent(tabRegistros,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGap(18, 18, 18)
-                                                                        .addComponent(asciireg,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addComponent(bitTab,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(controltab,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)));
+                                                                .addGap(24, 24, 24)
+                                                                .addGroup(layout.createParallelGroup(
+                                                                                GroupLayout.Alignment.LEADING,
+                                                                                false)
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                .addComponent(mem,
+                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                .addGap(18, 18, 18)
+                                                                                                .addComponent(asciimem,
+                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                .addGap(18, 18, 18)
+                                                                                                .addComponent(reloadButton,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                Short.MAX_VALUE))
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                .addComponent(conf,
+                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                .addPreferredGap(
+                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                                .addGroup(layout.createParallelGroup(
+                                                                                                                GroupLayout.Alignment.LEADING,
+                                                                                                                false)
+                                                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                                                .addComponent(stdinbutton,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                                                .addGap(0, 0, 0)
+                                                                                                                                .addComponent(stdinval,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                174,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE))
+                                                                                                                .addComponent(Instrucciones,
+                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                GroupLayout.PREFERRED_SIZE)))
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                .addGroup(layout.createParallelGroup(
+                                                                                                                GroupLayout.Alignment.LEADING)
+                                                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                                                .addComponent(tabRegistros,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                                                .addGap(18, 18, 18)
+                                                                                                                                .addComponent(asciireg,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE))
+                                                                                                                .addComponent(bitTab,
+                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                GroupLayout.PREFERRED_SIZE))
+                                                                                                .addGap(18, 18, 18)
+                                                                                                .addComponent(controltab,
+                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.PREFERRED_SIZE)))
+                                                                .addContainerGap(GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE)));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
-                                        .createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addGroup(layout.createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                                false)
-                                                        .addComponent(asciireg,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE)
-                                                        .addComponent(tabRegistros,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE))
-                                                .addComponent(controltab,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(bitTab,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                        .addGap(18, 18, 18)
-                                                                        .addComponent(conf,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                        .addGap(18, 18, 18)
-                                                                        .addComponent(Instrucciones,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                                16,
-                                                                                Short.MAX_VALUE)
-                                                                        .addGroup(layout.createParallelGroup(
-                                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(stdinbutton,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(stdinval,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                        .addGap(18, 20, Short.MAX_VALUE)
-                                                        .addGroup(layout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                .addComponent(mem,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(asciimem,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(layout.createSequentialGroup()
-                                                        .addGap(0, 0, Short.MAX_VALUE)
-                                                        .addComponent(reloadButton,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(24, 24, 24)));
+                                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                .addGroup(GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addGap(24, 24, 24)
+                                                                .addGroup(layout.createParallelGroup(
+                                                                                GroupLayout.Alignment.TRAILING)
+                                                                                .addGroup(layout.createParallelGroup(
+                                                                                                GroupLayout.Alignment.LEADING,
+                                                                                                false)
+                                                                                                .addComponent(asciireg,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                Short.MAX_VALUE)
+                                                                                                .addComponent(tabRegistros,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                Short.MAX_VALUE))
+                                                                                .addComponent(controltab,
+                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(layout.createParallelGroup(
+                                                                                GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                .addComponent(bitTab,
+                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                .addGroup(layout.createParallelGroup(
+                                                                                                                GroupLayout.Alignment.LEADING)
+                                                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                                                .addGap(18, 18, 18)
+                                                                                                                                .addComponent(conf,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE))
+                                                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                                                .addGap(18, 18, 18)
+                                                                                                                                .addComponent(Instrucciones,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                                                .addPreferredGap(
+                                                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                                                                                16,
+                                                                                                                                                Short.MAX_VALUE)
+                                                                                                                                .addGroup(layout.createParallelGroup(
+                                                                                                                                                GroupLayout.Alignment.BASELINE)
+                                                                                                                                                .addComponent(stdinbutton,
+                                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                .addComponent(stdinval,
+                                                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                                                GroupLayout.PREFERRED_SIZE))))
+                                                                                                .addGap(18, 20, Short.MAX_VALUE)
+                                                                                                .addGroup(layout.createParallelGroup(
+                                                                                                                GroupLayout.Alignment.TRAILING)
+                                                                                                                .addComponent(mem,
+                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                GroupLayout.PREFERRED_SIZE)
+                                                                                                                .addComponent(asciimem,
+                                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                                GroupLayout.PREFERRED_SIZE)))
+                                                                                .addGroup(layout.createSequentialGroup()
+                                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                                .addComponent(reloadButton,
+                                                                                                                GroupLayout.PREFERRED_SIZE,
+                                                                                                                GroupLayout.DEFAULT_SIZE,
+                                                                                                                GroupLayout.PREFERRED_SIZE)))
+                                                                .addGap(24, 24, 24)));
 
                 this.addKeyListener(new KeyAdapter() {
                         public void keyPressed(KeyEvent evt) {
