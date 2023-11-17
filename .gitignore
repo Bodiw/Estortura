@@ -2,4 +2,8 @@
 target/
 .idea/
 bin/
+
 traza.log
+config.json
+estortura.bin
+dependency-reduced-pom.xml
