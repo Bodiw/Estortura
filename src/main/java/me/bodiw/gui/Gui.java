@@ -34,7 +34,7 @@ import me.bodiw.model.Word;
 import me.bodiw.process.AssemblerProcess;
 
 /**
- *b
+ *
  * @author bogdan (con ayudita de NetBeans)
  */
 public class Gui extends JFrame {
@@ -904,6 +904,7 @@ public class Gui extends JFrame {
                         assembler.bitMap = ((AsciiLabel) evt.getSource()).word;
                 }
                 updateBitmap();
+                this.requestFocus();
         }
 
         private void stdinbuttonActionPerformed(ActionEvent evt) {
@@ -915,6 +916,8 @@ public class Gui extends JFrame {
                         stdoutpane.setText(s);
                         this.update();
                 }
+
+                this.requestFocus();
         }
 
         private void stdinvalKeyEvent(KeyEvent evt) {
@@ -930,11 +933,13 @@ public class Gui extends JFrame {
                 int steps = (Integer) stepspinner.getValue();
                 assembler.step(steps);
                 this.update();
+                this.requestFocus();
         }
 
         private void membuttonActionPerformed(ActionEvent evt) {
                 assembler.memAddress = (Integer) memspinner.getValue();
                 this.update();
+                this.requestFocus();
         }
 
         private void reloadButtonActionPerformed(ActionEvent evt) {
