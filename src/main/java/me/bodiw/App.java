@@ -10,7 +10,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 
 import me.bodiw.gui.Gui;
 import me.bodiw.process.AssemblerProcess;
-import oe.process.CompilerProcess;
+import me.bodiw.process.CompilerProcess;
 
 public class App {
 
