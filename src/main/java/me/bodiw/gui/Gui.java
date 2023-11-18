@@ -31,6 +31,7 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import me.bodiw.App;
+import me.bodiw.Config;
 import me.bodiw.model.Word;
 import me.bodiw.process.AssemblerProcess;
 
@@ -944,13 +945,30 @@ public class Gui extends JFrame {
         }
 
         private void reloadButtonActionPerformed(ActionEvent evt) {
+
+                Config cf = App.loadConfig(App.configPath);
+
+                if (cf == null) {
+                        return;
+                }
+
                 try {
                         assembler.close();
                 } catch (Exception e) {
+                        App.showError("Assembler", "Ha habido un error al cerrar el anterior emulador\n"
+                                        + "El emulador seguira siendo el mismo\n"
+                                        + "Para reintentar, reinicia el programa\n"
+                                        + e.getMessage());
                         e.printStackTrace();
                 }
 
-                assembler = App.createAssemblerProcess();
+                AssemblerProcess newAssembler = App.createAssemblerProcess(cf);
+
+                if (newAssembler == null) {
+                        return;
+                }
+
+                assembler = App.createAssemblerProcess(cf);
 
                 for (int i = 0; i < 8; i++) {
                         controlRegs[i].reg = assembler.controlRegs[i];

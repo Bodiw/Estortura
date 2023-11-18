@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Map;
 
+import me.bodiw.App;
 import me.bodiw.Config;
 import me.bodiw.gui.ControlReg;
 import me.bodiw.interpreter.Interpreter;
@@ -28,18 +29,18 @@ public class AssemblerProcess implements AutoCloseable {
 
     public int memAddress;
 
-    public AssemblerProcess(Config cf) {
+    public AssemblerProcess(Config cf) throws IOException {
         this.lastCmd = "";
 
-        try {
-            Process p = new ProcessBuilder(cf.emulator, "-c", cf.config, cf.bin).redirectErrorStream(true).start();
-            in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            out = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Process p = new ProcessBuilder(cf.emulator, "-c", cf.config, cf.bin).redirectErrorStream(true).start();
+        in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        out = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
 
-        this.read(); // Skip first config/lines
+        String output = this.readFirst(); // Skip first config/lines
+
+        if (output.contains("ERROR en lectura de datos")) {
+            throw new RuntimeException("Error intentando leer la salida del emulador\n" + output);
+        }
 
         memAddress = cf.iniMem - (cf.iniMem % 16);
         breakpoint_tag = cf.breakpoint;
@@ -93,6 +94,7 @@ public class AssemblerProcess implements AutoCloseable {
                     s.append((char) in.read());
                 }
             } catch (IOException | InterruptedException e) {
+                App.showError("Assembler reader", "Error intentando leer la salida del emulador\n" + e.getMessage());
                 e.printStackTrace();
             }
             /*
@@ -122,6 +124,7 @@ public class AssemblerProcess implements AutoCloseable {
             out.write(s + "\n");
             out.flush();
         } catch (IOException e) {
+            App.showError("Assembler writer", "Error intentando escribir al emulador\n" + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -132,6 +135,7 @@ public class AssemblerProcess implements AutoCloseable {
             out.flush();
             this.lastCmd = s;
         } catch (IOException e) {
+            App.showError("Assembler writer", "Error intentando escribir al emulador\n" + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -195,5 +199,24 @@ public class AssemblerProcess implements AutoCloseable {
             out.close();
         if (in != null)
             in.close();
+    }
+
+    private String readFirst() {
+        StringBuilder s = new StringBuilder(700);
+        do {
+            try {
+                while (!in.ready()) { // El pobre emulador es lentito
+                    Thread.sleep(5);
+                }
+                while (in.ready()) {
+                    s.append((char) in.read());
+                }
+            } catch (IOException | InterruptedException e) {
+                App.showError("Assembler reader", "Error intentando leer la salida del emulador\n" + e.getMessage());
+                e.printStackTrace();
+            }
+        } while (!s.toString().contains("88110>") && !s.toString().contains("ERROR en lectura de datos"));
+
+        return s.toString();
     }
 }
