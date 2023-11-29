@@ -15,10 +15,11 @@ import me.bodiw.model.Word;
 
 public class AssemblerProcess implements AutoCloseable {
 
-    public String emu, conf, bin, lastCmd, nextInst, breakpoint_tag;
+    public String emulator, conf, bin, lastCmd, nextInst, breakpoint_tag;
     public int stepsInicio, skipInicio;
-    public float scale;
+    public double scale;
 
+    Process proc;
     BufferedReader in;
     BufferedWriter out;
     public Word bitMap;
@@ -32,9 +33,9 @@ public class AssemblerProcess implements AutoCloseable {
     public AssemblerProcess(Config cf) throws IOException {
         this.lastCmd = "";
 
-        Process p = new ProcessBuilder(cf.emulator, "-c", cf.config, cf.bin).redirectErrorStream(true).start();
-        in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        out = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+        proc = new ProcessBuilder(cf.emulator, "-c", cf.config, cf.bin).redirectErrorStream(true).start();
+        in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+        out = new BufferedWriter(new OutputStreamWriter(proc.getOutputStream()));
 
         String output = this.readFirst(); // Skip first config/lines
 
@@ -42,10 +43,10 @@ public class AssemblerProcess implements AutoCloseable {
             throw new RuntimeException("Error intentando leer la salida del emulador\n" + output);
         }
 
-        memAddress = cf.iniMem - (cf.iniMem % 16);
+        memAddress = cf.memory_start - (cf.memory_start % 16);
         breakpoint_tag = cf.breakpoint;
-        skipInicio = cf.iniSkip;
-        stepsInicio = cf.iniStep;
+        skipInicio = cf.skip_start;
+        stepsInicio = cf.step_start;
         scale = cf.scale;
 
         controlRegs = new ControlReg[8];
@@ -63,11 +64,11 @@ public class AssemblerProcess implements AutoCloseable {
             }
         }
 
-        if (cf.bitmapType.equals("REGISTER")) {
-            bitMap = regs[cf.iniBitmap / 4][cf.iniBitmap % 4];
-        } else if (cf.bitmapType.equals("MEMORY")) {
-            cf.iniBitmap = cf.iniBitmap % 32;
-            bitMap = mem[cf.iniBitmap / 4][cf.iniBitmap % 4];
+        if (cf.bitmap_type == 0) {
+            bitMap = regs[cf.bitmap_start / 4][cf.bitmap_start % 4];
+        } else if (cf.bitmap_type == 1) {
+            cf.bitmap_start = cf.bitmap_start % 32;
+            bitMap = mem[cf.bitmap_start / 4][cf.bitmap_start % 4];
         }
 
         if (!breakpoint_tag.isEmpty()) {
@@ -199,6 +200,8 @@ public class AssemblerProcess implements AutoCloseable {
             out.close();
         if (in != null)
             in.close();
+        if (proc != null)
+            proc.destroy();
     }
 
     private String readFirst() {
