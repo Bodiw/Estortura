@@ -21,6 +21,8 @@ public class CompilerProcess {
 
         String output = new String(p.getInputStream().readAllBytes());
 
+        System.out.println(output);
+        
         if (output.contains("88110.ens-ERROR")) {
             throw new RuntimeException(output);
         } else if (output.contains("No pude abrir")) {

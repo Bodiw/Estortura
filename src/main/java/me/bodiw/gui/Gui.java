@@ -1031,9 +1031,12 @@ public class Gui extends JFrame {
         private void updateBitmap() {
                 Word word = assembler.bitMap;
                 StringBuilder s = new StringBuilder();
-
+                StringBuilder reverser = new StringBuilder();
+                
                 for (int i = 3; i >= 0; i--) {
-                        s.append(String.format("%8s", Integer.toBinaryString(word.data[i] & 0xFF)).replace(' ', '0'));
+                        reverser.append(String.format("%8s", Integer.toBinaryString(word.data[i] & 0xFF)).replace(' ', '0')).reverse();
+                        s.append(reverser);
+                        reverser.setLength(0);
                 }
 
                 for (int i = 0; i < 32; i++) {

@@ -45,7 +45,7 @@ public class App {
         }
 
         String name = Names.NAMES[(int) (Math.random() * Names.NAMES.length)];
-        
+
         Gui gui = new Gui(name, ap);
 
         gui.setLocationRelativeTo(null);
@@ -82,7 +82,7 @@ public class App {
         try {
             config.load();
         } catch (IOException e) {
-            showError("Config", "Failed to read " + configPath + " config file");
+            showError("Config", "Failed to read " + configPath + " config file\nDos tags seguidas o una duplicada?");
             e.printStackTrace();
             return null;
         }

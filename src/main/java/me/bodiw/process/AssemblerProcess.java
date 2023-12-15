@@ -19,6 +19,7 @@ public class AssemblerProcess implements AutoCloseable {
     public int stepsInicio, skipInicio;
     public float scale;
 
+    Process proc;
     BufferedReader in;
     BufferedWriter out;
     public Word bitMap;
@@ -32,9 +33,9 @@ public class AssemblerProcess implements AutoCloseable {
     public AssemblerProcess(Config cf) throws IOException {
         this.lastCmd = "";
 
-        Process p = new ProcessBuilder(cf.emulator, "-c", cf.config, cf.bin).redirectErrorStream(true).start();
-        in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        out = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+        proc = new ProcessBuilder(cf.emulator, "-c", cf.config, cf.bin).redirectErrorStream(true).start();
+        in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+        out = new BufferedWriter(new OutputStreamWriter(proc.getOutputStream()));
 
         String output = this.readFirst(); // Skip first config/lines
 
@@ -199,6 +200,8 @@ public class AssemblerProcess implements AutoCloseable {
             out.close();
         if (in != null)
             in.close();
+        if (proc != null)
+            proc.destroy();
     }
 
     private String readFirst() {
