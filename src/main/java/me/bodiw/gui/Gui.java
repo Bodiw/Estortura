@@ -962,13 +962,12 @@ public class Gui extends JFrame {
                         e.printStackTrace();
                 }
 
-                AssemblerProcess newAssembler = App.createAssemblerProcess(cf);
+                assembler = App.createAssemblerProcess(cf);
 
-                if (newAssembler == null) {
+                if (assembler == null) {
                         return;
                 }
 
-                assembler = App.createAssemblerProcess(cf);
 
                 for (int i = 0; i < 8; i++) {
                         controlRegs[i].reg = assembler.controlRegs[i];
