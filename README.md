@@ -96,7 +96,7 @@ Primero se ejecuta `TAG_BREAKPOINT` y luego `SKIP_INICIO`, por lo que es poosibl
 El bitmap muestra en binario una celda de la memoria o de los registros, no el valor en si. Si cambia la direccion de la memoria en dicha celda, tambien lo hace el bitmap.
 
 El arhivo `configEjemploWindows.json` sirve de configuracion de ejemplo de un sistema Windows.
-Esta configuracion asume haber descargado el contenido del [Emulador Proporcionado por el DATSI](https://www.datsi.fi.upm.es/88110/88k_Windows_v11.zip), renombrado la configuracion a `config.json` y desempaquetado sus contenidos en una carpeta emu en el mismo directorio que el ejecutable de la GUI, asi como que el codigo fuente es un archivo `cvd.ens` en la misma carpeta que el .jar de esta GUI.
+Esta configuracion asume haber descargado el contenido del [Emulador del MC88110 Proporcionado por el Departamento de Arquitectura y Sistemas Informáticos de la Facultad de Informática de la UPM](https://www.datsi.fi.upm.es/docencia/Estructura_09/Proyecto_Ensamblador/), renombrado la configuracion a `config.json` y desempaquetado sus contenidos en una carpeta emu en el mismo directorio que el ejecutable de la GUI, asi como que el codigo fuente es un archivo `cvd.ens` en la misma carpeta que el .jar de esta GUI.
 Tambien asume que las direcciones de memoria que se quieren traducir a ascii estan en la 4000, y que la memoria 4000 es la que se quiere ver en el bitmap.
 
 ## Ejecucion
